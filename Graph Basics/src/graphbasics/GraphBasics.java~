@@ -1,0 +1,71 @@
+package graphbasics;
+
+import java.io.File;
+import java.util.Scanner;
+
+public class GraphBasics {
+
+    Scanner scn;
+
+    public static void main(String[] args) {
+        GraphBasics gb = new GraphBasics();
+
+        try {
+
+            File f = new File("graph.txt");
+
+            gb.scn = new Scanner(f);
+
+            int numberOFNodes = gb.scn.nextInt();
+            int numberOFEdeges = gb.scn.nextInt();
+
+            System.out.println("number of edges" + numberOFEdeges);
+
+            int[][] adjacenyMatrix = new int[numberOFNodes + 1][numberOFNodes + 1];
+            int i = 0;
+            while (gb.scn.hasNext()) {
+                int u = gb.scn.nextInt();
+                int v = gb.scn.nextInt();
+
+//                System.out.println("u = " + u + " v = " + v);
+
+                adjacenyMatrix[u][v] = 1;
+                adjacenyMatrix[v][u] = 1;
+                i++;
+
+            }
+//            System.out.println("i " + i);
+//            System.out.print("  ");
+//            for(int k=1;k<adjacenyMatrix.length;k++){
+//                System.out.print(k+" ");
+//            }
+//            System.out.println();
+//            for(int k=1;k<adjacenyMatrix.length;k++){
+//                System.out.print(k+" ");
+//                for(int j=1;j<adjacenyMatrix[k].length;j++){
+//                   
+//                        System.out.print(adjacenyMatrix[k][j]+" ");
+//                    
+//                }
+//                System.out.println();
+//            }
+//            System.out.println();
+            
+            for(int k=1;k<adjacenyMatrix.length;k++){
+                System.out.print(k+" ");
+                for(int j=1;j<adjacenyMatrix[k].length;j++){
+                    if(adjacenyMatrix[k][j]==1){
+                        System.out.print(j+" ");
+                    }
+                }
+                System.out.println();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+//        System.out.println("Volla ");
+    }
+
+}

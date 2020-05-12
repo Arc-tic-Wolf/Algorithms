@@ -1,0 +1,41 @@
+
+package lab0;
+
+import java.util.*;
+import java.io.*;
+
+
+public class Lab0 {
+    
+    Scanner scan;
+    
+    public static void main(String[] args) throws Exception{
+        // TODO code application logic here
+        File f=new File("F:\\Lab\\Lab0\\z.txt");
+  Lab0 o=new Lab0();
+                Sort x=new Sort();
+  o.scan=new Scanner(f);
+  int n=o.scan.nextInt();
+  int []a=new int[n];
+  int i=0;
+  for(;o.scan.hasNext();){
+   a[i++]=o.scan.nextInt();
+   //System.out.println(a[i-1]);
+  }
+                
+                
+                System.out.println("Merge Sort:");
+                int []d=x.MergeSort(a,0,a.length-1);
+                for(int y:d){
+                    System.out.println(y);
+                }
+  System.out.println("Heap Sort:");
+  int [] e=x.HeapSort(a);
+        for(int y:e){
+            System.out.println(y);
+        }
+                
+                
+    }
+    
+}

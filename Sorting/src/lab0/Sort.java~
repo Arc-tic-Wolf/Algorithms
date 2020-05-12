@@ -1,0 +1,78 @@
+
+package lab0;
+
+
+public class Sort {
+    public int [] MergeSort(int []a, int lo, int hi){
+        if(lo>hi){
+            return null;
+        }
+        if(lo==hi){
+            int []q=new int[1];
+            q[0]=a[lo];
+            return q;
+        }
+        int mid=(lo+hi)/2;
+        int []b=MergeSort(a,lo,mid);
+        int []c=MergeSort(a,mid+1,hi);
+        a=Merge(b,c);
+        return a;
+    }
+    public int [] Merge(int [] a, int [] b){
+        int []z=new int[a.length+b.length];
+        int i=0,j=0,k=0;
+        for(;k<z.length;){
+            if(i==a.length){
+                z[k++]=b[j++];
+            } else if(j==b.length){
+                z[k++]=a[i++];
+            }else {
+            if(a[i]<b[j]){
+               z[k++]=a[i++]; 
+            }else {
+                z[k++]=b[j++];
+            }
+            }
+        }
+        return z;
+    }
+    public int [] HeapSort(int [] a){
+        int num=a.length;
+        for(int i=num/2-1;i>=0;i--){
+            Heapify(a, i, num);
+        }
+        for(int i=num-1;i>=0;i--){
+            int temp = a[0]; 
+            a[0] = a[i]; 
+            a[i] = temp; 
+            Heapify(a,0,i);
+
+        }
+        return a;
+    }
+    
+    public int [] Heapify(int [] a, int i, int num){
+        int left=a[2*i];
+        int right=a[2*i+1];
+        int max=0;
+        int pos=i;
+        if(2*i<num && left>max){
+            max=left;
+            pos=2*i;
+        }
+        if(2*i+1<num && right>max){
+            max=right;
+            pos=2*i+1;
+        } 
+        if(max!=a[i]){
+            int temp=a[i];
+            a[i]=max;
+            a[pos]=temp;
+
+            Heapify(a,max,num);
+            
+        }
+        return a;
+    }
+    
+}
